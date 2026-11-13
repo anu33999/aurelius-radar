@@ -1,0 +1,101 @@
+{
+  "framework": "nextjs",
+  "crons": [
+    {
+      "path": "/api/email/run?slot=1",
+      "schedule": "0 3 * * *"
+    },
+    {
+      "path": "/api/email/run?slot=2",
+      "schedule": "30 3 * * *"
+    },
+    {
+      "path": "/api/email/run?slot=3",
+      "schedule": "0 4 * * *"
+    },
+    {
+      "path": "/api/email/run?slot=4",
+      "schedule": "30 4 * * *"
+    },
+    {
+      "path": "/api/email/run?slot=5",
+      "schedule": "0 5 * * *"
+    },
+    {
+      "path": "/api/email/run?slot=6",
+      "schedule": "30 5 * * *"
+    },
+    {
+      "path": "/api/email/run?slot=7",
+      "schedule": "0 6 * * *"
+    },
+    {
+      "path": "/api/email/run?slot=8",
+      "schedule": "30 6 * * *"
+    },
+    {
+      "path": "/api/email/run?slot=9",
+      "schedule": "0 7 * * *"
+    },
+    {
+      "path": "/api/email/run?slot=10",
+      "schedule": "30 7 * * *"
+    },
+    {
+      "path": "/api/email/run?slot=11",
+      "schedule": "0 8 * * *"
+    },
+    {
+      "path": "/api/email/run?slot=12",
+      "schedule": "30 8 * * *"
+    },
+    {
+      "path": "/api/email/run?slot=13",
+      "schedule": "0 9 * * *"
+    },
+    {
+      "path": "/api/email/run?slot=14",
+      "schedule": "30 9 * * *"
+    },
+    {
+      "path": "/api/email/run?slot=15",
+      "schedule": "0 10 * * *"
+    },
+    {
+      "path": "/api/email/run?slot=16",
+      "schedule": "30 10 * * *"
+    },
+    {
+      "path": "/api/email/run?slot=17",
+      "schedule": "0 11 * * *"
+    },
+    {
+      "path": "/api/email/run?slot=18",
+      "schedule": "30 11 * * *"
+    },
+    {
+      "path": "/api/email/run?slot=19",
+      "schedule": "0 12 * * *"
+    },
+    {
+      "path": "/api/email/run?slot=20",
+      "schedule": "30 12 * * *"
+    },
+    {
+      "path": "/api/email/run?slot=21",
+      "schedule": "0 13 * * *"
+    },
+    {
+      "path": "/api/email/run?slot=22",
+      "schedule": "30 13 * * *"
+    },
+    {
+      "path": "/api/email/run?slot=23",
+      "schedule": "0 14 * * *"
+    },
+    {
+      "path": "/api/email/run?slot=24",
+      "schedule": "30 14 * * *"
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Postgres (Neon via Vercel Storage). DATABASE_URL is the pooled URL used at runtime;
+// DATABASE_URL_UNPOOLED is the direct URL the Prisma CLI needs for `db push`.
+// Postgres maps String to `text`, so the long-text fields need no `@db.Text`.
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL_UNPOOLED")
+}
+
+model Business {
+  id                String         @id @default(cuid())
+  name              String
+  industry          String? // e.g. "DTC E-Commerce", "SaaS", "Real Estate", "Hospitality", "Healthcare"
+  website           String?
+  phone             String?
+  phoneSource       String? // null = from the listing / website / Google; "WEB_SEARCH" = read from search results, verify before calling
+  email             String?
+  address           String?
+  city              String // e.g. "London", "New York", "Dubai"
+  locality          String? // optional district, e.g. "Shoreditch"
+  state             String? // optional state / province / emirate
+  country           String? // e.g. "United Kingdom", "United States"
+  latitude          Float?
+  longitude         Float?
+  niche             String? // id from lib/niches.ts, e.g. "cafe", "dental"
+  googleRating      Float?
+  reviewCount       Int?
+  googlePlaceId     String?  @unique
+  instagramUrl      String?
+  linkedinUrl       String?
+  whatsapp          String? // confirmed WhatsApp number only: listed on OSM (contact:whatsapp) or linked from the business's own site
+  opportunityFlags  String? // JSON array: NO_WEBSITE, LOW_RATING, FEW_REVIEWS, NO_PHONE, NO_SOCIAL
+  lastContactedAt   DateTime?
+  shortlisted       Boolean        @default(false)
+  source            String? // "SEED", "OSM", "MANUAL", "AUDIT"
+  estimatedRevenue  String? // e.g. "Pre-revenue", "<$10k/mo", "$10k-50k/mo"
+  techStack         String? // e.g. "Shopify, Klaviyo, Meta Pixel"
+
+  // Commercial CRM pipeline
+  pipelineStage     String         @default("LEAD") // LEAD, PITCH_SENT, MEETING_BOOKED, PROPOSAL_SHARED, CLOSED_WON, CLOSED_LOST
+  priority          String         @default("MEDIUM") // CRITICAL, HIGH, MEDIUM, LOW
+  monthlyBudget     String? // Estimated client retainer budget
+  notes             String?
+  pitchSummary      String?
+  matchedServiceIds String? // JSON array of service codes
+  readinessScore    Int? // 0 - 100
+  opportunityScore  Int? // 0 - 100
+  auditJson         String? // Last full audit result (JSON)
+  lastAuditedAt     DateTime?
+  contactsCheckedAt DateTime? // when the website was last read for phone / email / WhatsApp
+  placesCheckedAt   DateTime? // when this business was looked up on Google Places (billed per lookup, so never repeated)
+  emailCheckedAt    DateTime? // when the website was read for an email (homepage + contact/about/imprint pages)
+  webEmailCheckedAt DateTime? // when web search was tried for an email (uses search credits, so never repeated)
+  emailSource       String? // "WEB_SEARCH" when the email came from search results (verify), null otherwise
+  webPhoneCheckedAt DateTime? // when web search was tried for a phone (uses search credits, so never repeated)
+  emailedAt         DateTime? // when the cold email was sent from the app (never sent twice)
+  emailStatus       String? // SENT, FAILED, OPTED_OUT
+  emailError        String?
+  emailSubject      String? // subject of the cold email, used to thread the follow-up
+  emailMessageId    String?
+  emailBody         String? // exactly what was sent, shown in the Outreach tab
+  emailFocus        String? // the main area pitched, named in the follow-up
+  repliedAt         DateTime? // when a reply from their address was found in the Gmail inbox
+  followUpSentAt    DateTime? // the single follow-up; never more than one
+  emailQueuedAt     DateTime? // waiting in the auto-email queue (researched, written and sent automatically)
+  researchJson      String? // web research done before the cold email (listings, social pages, about)
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+
+  crmNotes          BusinessNote[]
+
+  @@index([country, city])
+  @@index([pipelineStage])
+}
+
+model SocialIntentLead {
+  id              String    @id @default(cuid())
+  platform        String // REDDIT, TWITTER, LINKEDIN
+  sourceUrl       String    @unique
+  authorHandle    String?
+  postTitle       String?
+  postContent     String
+  postedAt        DateTime?
+  painPoint       String?
+  matchedServices String? // JSON string of service codes
+  intentCategory  String // BUYER_HIRING, ADVICE_SEEKING
+  classifiedBy    String    @default("RULES") // AI or RULES
+  confidence      Int? // 0 - 100
+  status          String    @default("NEW") // NEW, CONTACTED, ARCHIVED
+  pitchDraft      String? // JSON: { comment, dm }
+  shortlisted     Boolean   @default(false)
+  createdAt       DateTime  @default(now())
+}
+
+model BusinessNote {
+  id         String   @id @default(cuid())
+  businessId String
+  content    String
+  author     String   @default("Kreatif Team")
+  createdAt  DateTime @default(now())
+  business   Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+}
+
+model Service {
+  id           String  @id @default(cuid())
+  code         String  @unique // e.g. "DM-001"
+  name         String
+  practiceArea String
+  summary      String?
+  tags         String? // comma separated keywords used by the matcher
+  isAI         Boolean @default(false)
+}
+
+/// Small app-wide settings, e.g. the sender profile used in cold emails (JSON value).
+model Setting {
+  key   String @id
+  value String
+}

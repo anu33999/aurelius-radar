@@ -1,0 +1,16 @@
+{
+  "_readme": "Proof points used in outreach. Replace with real, cleared case results. Entries whose text still contains TODO are treated as placeholders and earn no 'commercial proof' points in the pitch score. Do not add numbers you cannot defend.",
+  "senderName": "Team Kreatif Atelier",
+  "senderTitle": "Aurelius, Kreatif Atelier",
+  "website": "https://www.kreatifatelier.com",
+  "points": [
+    {
+      "text": "We rebuilt the website and produced a 12-page premium company profile for a B2B packaging manufacturer in India. TODO: add the measurable outcome once cleared.",
+      "named": false
+    },
+    {
+      "text": "We redesigned the company profile for a B2B printing-ink manufacturer, from positioning blueprint through page layouts. TODO: add the measurable outcome once cleared.",
+      "named": false
+    }
+  ]
+}

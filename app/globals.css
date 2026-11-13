@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------ */
+/* Themes. Colours are space-separated RGB triplets so Tailwind opacity */
+/* modifiers (text-cream/60, bg-gold/10 ...) keep working.             */
+/* :root = the default theme (Electric Sunset).                        */
+/* ------------------------------------------------------------------ */
+:root {
+  color-scheme: dark;
+  --c-obsidian: 26 11 58; --c-matte: 44 18 92; --c-matte2: 60 27 120; --c-cream: 255 240 232;
+  --c-gold: 255 138 101; --c-golddim: 255 176 130; --c-onaccent: 38 8 60;
+  --c-emerald: 52 224 160; --c-amber: 255 196 61; --c-slate: 176 160 230; --c-crimson: 255 76 160;
+  --c-errtext: 255 195 220; --c-warntext: 255 230 165;
+  --tile-filter: invert(1) hue-rotate(180deg) brightness(.82) contrast(.9) saturate(.5);
+}
+
+[data-theme="sunset"] {
+  color-scheme: dark;
+  --c-obsidian: 26 11 58; --c-matte: 44 18 92; --c-matte2: 60 27 120; --c-cream: 255 240 232;
+  --c-gold: 255 138 101; --c-golddim: 255 176 130; --c-onaccent: 38 8 60;
+  --c-emerald: 52 224 160; --c-amber: 255 196 61; --c-slate: 176 160 230; --c-crimson: 255 76 160;
+  --c-errtext: 255 195 220; --c-warntext: 255 230 165;
+  --tile-filter: invert(1) hue-rotate(180deg) brightness(.82) contrast(.9) saturate(.5);
+}
+
+[data-theme="cyber"] {
+  color-scheme: dark;
+  --c-obsidian: 5 10 36; --c-matte: 10 20 64; --c-matte2: 17 32 92; --c-cream: 225 245 255;
+  --c-gold: 0 229 255; --c-golddim: 0 168 196; --c-onaccent: 2 10 40;
+  --c-emerald: 163 255 51; --c-amber: 255 214 10; --c-slate: 140 165 225; --c-crimson: 255 46 190;
+  --c-errtext: 255 195 240; --c-warntext: 255 240 160;
+  --tile-filter: invert(1) hue-rotate(180deg) brightness(.82) contrast(.9) saturate(.5);
+}
+
+[data-theme="citrus"] {
+  color-scheme: light;
+  --c-obsidian: 236 247 255; --c-matte: 255 255 255; --c-matte2: 224 242 252; --c-cream: 16 42 67;
+  --c-gold: 217 70 8; --c-golddim: 8 145 160; --c-onaccent: 255 255 255;
+  --c-emerald: 5 150 105; --c-amber: 170 95 0; --c-slate: 71 98 120; --c-crimson: 200 30 80;
+  --c-errtext: 140 20 50; --c-warntext: 120 70 0;
+  --tile-filter: none;
+}
+
+[data-theme="studio"] {
+  color-scheme: dark;
+  --c-obsidian: 20 36 120; --c-matte: 31 54 160; --c-matte2: 43 72 190; --c-cream: 240 238 255;
+  --c-gold: 255 170 110; --c-golddim: 218 165 32; --c-onaccent: 20 30 90;
+  --c-emerald: 80 224 175; --c-amber: 245 190 40; --c-slate: 195 185 245; --c-crimson: 255 120 150;
+  --c-errtext: 255 210 220; --c-warntext: 255 236 170;
+  --tile-filter: invert(1) hue-rotate(180deg) brightness(.82) contrast(.9) saturate(.5);
+}
+
+[data-theme="maroon"] {
+  color-scheme: dark;
+  --c-obsidian: 28 8 14; --c-matte: 44 14 22; --c-matte2: 58 20 30; --c-cream: 250 236 238;
+  --c-gold: 233 150 165; --c-golddim: 190 110 125; --c-onaccent: 40 8 16;
+  --c-emerald: 94 190 150; --c-amber: 232 178 90; --c-slate: 170 140 150; --c-crimson: 226 92 98;
+  --c-errtext: 255 200 205; --c-warntext: 250 220 170;
+  --tile-filter: invert(1) hue-rotate(180deg) brightness(.82) contrast(.9) saturate(.5);
+}
+
+[data-theme="blush"] {
+  color-scheme: light;
+  --c-obsidian: 253 245 246; --c-matte: 255 255 255; --c-matte2: 249 232 235; --c-cream: 58 16 28;
+  --c-gold: 128 24 48; --c-golddim: 160 80 98; --c-onaccent: 255 255 255;
+  --c-emerald: 22 120 84; --c-amber: 160 100 10; --c-slate: 100 90 98; --c-crimson: 176 30 52;
+  --c-errtext: 130 20 40; --c-warntext: 112 70 6;
+  --tile-filter: none;
+}
+
+[data-theme="midnight"] {
+  color-scheme: dark;
+  --c-obsidian: 8 14 28; --c-matte: 14 24 46; --c-matte2: 22 34 62; --c-cream: 232 240 252;
+  --c-gold: 96 165 250; --c-golddim: 70 120 190; --c-onaccent: 6 14 30;
+  --c-emerald: 52 190 140; --c-amber: 240 180 70; --c-slate: 140 155 180; --c-crimson: 240 100 100;
+  --c-errtext: 254 202 202; --c-warntext: 253 230 170;
+  --tile-filter: invert(1) hue-rotate(180deg) brightness(.82) contrast(.9) saturate(.5);
+}
+
+[data-theme="sky"] {
+  color-scheme: light;
+  --c-obsidian: 241 246 253; --c-matte: 255 255 255; --c-matte2: 232 240 252; --c-cream: 15 30 56;
+  --c-gold: 29 78 216; --c-golddim: 90 120 190; --c-onaccent: 255 255 255;
+  --c-emerald: 14 116 92; --c-amber: 154 96 8; --c-slate: 80 96 120; --c-crimson: 185 28 28;
+  --c-errtext: 127 29 29; --c-warntext: 113 63 18;
+  --tile-filter: none;
+}
+
+html, body { background: rgb(var(--c-obsidian)); color: rgb(var(--c-cream)); }
+body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; transition: background-color .2s, color .2s; }
+
+::selection { background: rgb(var(--c-gold)); color: rgb(var(--c-onaccent)); }
+* { scrollbar-width: thin; scrollbar-color: rgb(var(--c-cream) / .25) rgb(var(--c-obsidian)); }
+
+/* Light themes: faint text needs more opacity to stay readable on bright backgrounds. */
+[data-theme="blush"] .text-cream\/30,
+[data-theme="sky"] .text-cream\/30,
+[data-theme="citrus"] .text-cream\/30,
+[data-theme="blush"] .text-cream\/35,
+[data-theme="sky"] .text-cream\/35,
+[data-theme="citrus"] .text-cream\/35,
+[data-theme="blush"] .text-cream\/40,
+[data-theme="sky"] .text-cream\/40,
+[data-theme="citrus"] .text-cream\/40,
+[data-theme="blush"] .text-cream\/45,
+[data-theme="sky"] .text-cream\/45,
+[data-theme="citrus"] .text-cream\/45,
+[data-theme="blush"] .text-cream\/50,
+[data-theme="sky"] .text-cream\/50,
+[data-theme="citrus"] .text-cream\/50,
+[data-theme="blush"] .text-cream\/55,
+[data-theme="sky"] .text-cream\/55,
+[data-theme="citrus"] .text-cream\/55,
+[data-theme="blush"] .text-cream\/60,
+[data-theme="sky"] .text-cream\/60,
+[data-theme="citrus"] .text-cream\/60 { color: rgb(var(--c-cream) / .72); }
+[data-theme="blush"] .card,
+[data-theme="sky"] .card,
+[data-theme="citrus"] .card { box-shadow: 0 1px 2px rgb(var(--c-cream) / .06), 0 4px 14px rgb(var(--c-cream) / .05); }
+
+@layer components {
+  .card { @apply rounded-xl border border-cream/10 bg-matte; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-3.5 py-2 text-sm font-medium transition disabled:cursor-not-allowed disabled:opacity-50; }
+  .btn-gold { @apply btn bg-gold text-onaccent hover:brightness-110; }
+  .btn-ghost { @apply btn border border-cream/20 text-cream hover:border-gold/60 hover:text-gold; }
+  .input { @apply w-full rounded-lg border border-cream/20 bg-obsidian px-3 py-2 text-sm text-cream placeholder:text-cream/35 outline-none focus:border-gold/70; }
+  .label { @apply mb-1 block text-[11px] font-medium uppercase tracking-[0.14em] text-gold/80; }
+  .h-serif { font-family: Georgia, Cambria, "Times New Roman", serif; }
+}
+
+/* Leaflet skin (follows the theme) */
+.leaflet-container { background: rgb(var(--c-obsidian)); font-family: inherit; }
+.leaflet-popup-content-wrapper, .leaflet-popup-tip { background: rgb(var(--c-matte)); color: rgb(var(--c-cream)); border: 1px solid rgb(var(--c-gold) / .35); }
+.leaflet-popup-content { margin: 10px 12px; font-size: 12px; line-height: 1.45; }
+.leaflet-container a { color: rgb(var(--c-gold)); }
+.leaflet-control-attribution { background: rgb(var(--c-obsidian) / .8) !important; color: rgb(var(--c-golddim)) !important; }
+.leaflet-control-attribution a { color: rgb(var(--c-gold)) !important; }
+.leaflet-bar a { background: rgb(var(--c-matte)); color: rgb(var(--c-gold)); border-bottom: 1px solid rgb(var(--c-cream) / .1); }
+.leaflet-tile-pane { filter: var(--tile-filter); }
+.hub-label { background: transparent; border: none; box-shadow: none; color: rgb(var(--c-gold)); font-weight: 600; font-size: 11px; letter-spacing: .06em; text-shadow: 0 0 4px rgb(var(--c-obsidian)), 0 0 4px rgb(var(--c-obsidian)); }
+.hub-label:before { display: none; }
